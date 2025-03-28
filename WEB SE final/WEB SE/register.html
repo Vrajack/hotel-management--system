@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guestopia Registration</title>
+  <link rel="stylesheet" href="register.css">
+  <script>
+    function saveUserData() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const fullname = document.getElementById('fullname').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+
+      const userData = {
+        username,
+        password,
+        fullname,
+        email,
+        phone
+      };
+
+      localStorage.setItem('userData', JSON.stringify(userData));
+      alert('Registration successful! You will now be redirected to the login page.');
+      window.location.href = 'login.html'; // Redirect to the login page
+    }
+  </script>
+</head>
+<body>
+  <div class="registration-container">
+    <h1>Create an Account</h1>
+    <form action="#" method="POST" class="registration-form">
+      <div class="input-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required pattern="[a-zA-Z0-9]{4,}" title="Username must be at least 4 characters long and can only contain letters and numbers">
+      </div>
+      <div class="input-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters">
+      </div>
+      <div class="input-group">
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" required pattern="[A-Za-z\s]{3,}" title="Enter a valid name (at least 3 characters)">
+      </div>
+      <div class="input-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="input-group">
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" title="Enter a 10-digit phone number">
+      </div>
+      <button type="button" onclick="saveUserData()">Register</button>
+    </form>
+  </div>
+</body>
+</html>

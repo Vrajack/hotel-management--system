@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="homeStyle.css">
+  <title>Hotel Management Admin</title>
+</head>
+<body>
+  <header class="header" >
+    <h1 style="color: white;">Guestopia</h1>
+</header>
+
+<nav class="navigation">
+    <ul class="left-menu">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="booking.html">Room Booking</a></li>
+        <li><a href="ActivitySelection.html">Activity Selection</a></li>
+        <li><a href="admin.html">Admin Panel</a></li>
+        <li><a href="food-order.html">Food Order</a></li>
+    </ul>
+    <ul class="right-menu">
+        <li><a href="login.html">Log Out</a></li>
+    </ul>
+</nav>
+
+  <div id="adminDashboard">
+    <h1>Admin Dashboard</h1>
+
+    <div class="dashboardSection" id="employeeListSection">
+      <h2>Employee List</h2>
+      <table id="employeeTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Post</th>
+          </tr>
+        </thead>
+        <tbody id="employeeTableBody"></tbody>
+      </table>
+      <div id="employeeForm">
+        <h3>Add Employee</h3>
+        <form id="addEmployeeForm">
+          <label for="employeeName">Name:</label>
+          <input type="text" id="employeeName" name="employeeName" required> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <label for="employeePost">Post:</label>
+          <input type="text" id="employeePost" name="employeePost" required><br><br>
+          <center><button type="button" onclick="addEmployee()">Add Employee</button></center>
+        </form>
+      </div>
+    </div>
+<br><br>
+    <div class="dashboardSection" id="assignWorkSection">
+      <h2>Assign Work</h2>
+      <div id="assignedWork">
+        <table id="taskTable">
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Assignee</th>
+              <th>Deadline</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="taskTableBody"></tbody>
+        </table>
+        <div id="taskForm">
+          <h3>Assign a Task</h3>
+          <form id="assignTaskForm">
+            <label for="task">Task:</label>
+            <input type="text" id="task" name="task" required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="assignee">Assign to:</label>
+            <select id="assignee" name="assignee" required></select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="deadline">Deadline:</label>
+            <input type="datetime-local" id="deadline" name="deadline" required><br><br>
+            <center><button type="button" onclick="assignTask()">Assign Task</button></center>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript code goes here
+    const employeeTableBody = document.getElementById('employeeTableBody');
+    const taskTableBody = document.getElementById('taskTableBody');
+    const assigneeSelect = document.getElementById('assignee');
+
+    function addEmployee() {
+      const name = document.getElementById('employeeName').value;
+      const post = document.getElementById('employeePost').value;
+
+      const newRow = employeeTableBody.insertRow(-1);
+      const cell1 = newRow.insertCell(0);
+      const cell2 = newRow.insertCell(1);
+      cell1.textContent = name;
+      cell2.textContent = post;
+
+      // Update the list of employees in the Assign Work form
+      updateAssigneeList();
+    }
+
+    function updateAssigneeList() {
+      assigneeSelect.innerHTML = ''; // Clear previous options
+
+      // Populate the select options with employees from the employee table
+      for (let i = 0; i < employeeTableBody.rows.length; i++) {
+        const employeeName = employeeTableBody.rows[i].cells[0].textContent;
+        const option = document.createElement('option');
+        option.value = employeeName;
+        option.textContent = employeeName;
+        assigneeSelect.appendChild(option);
+      }
+    }
+
+    function assignTask() {
+      const task = document.getElementById('task').value;
+      const assignee = document.getElementById('assignee').value;
+      const deadline = document.getElementById('deadline').value;
+
+      const newRow = taskTableBody.insertRow(-1);
+      const cell1 = newRow.insertCell(0);
+      const cell2 = newRow.insertCell(1);
+      const cell3 = newRow.insertCell(2);
+      const cell4 = newRow.insertCell(3);
+
+      cell1.textContent = task;
+      cell2.textContent = assignee;
+      cell3.textContent = deadline;
+      cell4.textContent = 'Pending'; // Default status
+    }
+  </script>
+
+</body>
+</html>

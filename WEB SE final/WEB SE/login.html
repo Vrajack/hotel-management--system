@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guestopia Login</title>
+  <link rel="stylesheet" href="Login.css">
+  <script>
+    function checkLogin() {
+      const storedUserData = localStorage.getItem('userData');
+      if (storedUserData) {
+        const userData = JSON.parse(storedUserData);
+        const enteredUsername = document.getElementById('username').value;
+        const enteredPassword = document.getElementById('password').value;
+
+        if (enteredUsername === userData.username && enteredPassword === userData.password) {
+          alert('Login successful!');
+          // Redirect to a dashboard or another page upon successful login
+          window.location.href = 'home.html';
+        } else {
+          alert('Invalid username or password. Please try again.');
+        }
+      } else {
+        alert('User data not found. Please register.');
+        // Redirect to the registration page if user data doesn't exist
+        window.location.href = 'register.html';
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="login-container">
+    <h1>Welcome to Guestopia</h1>
+    <form class="login-form">
+      <div class="input-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="button" onclick="checkLogin()">Login</button>
+    </form>
+    <p class="new-user-link">New User? <a href="register.html">Create an account</a></p>
+  </div>
+</body>
+</html>

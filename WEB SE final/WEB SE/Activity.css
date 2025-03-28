@@ -1,0 +1,139 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  .container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  /* Activity Selection Styles */
+  .activities {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+  
+  .activity {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px 10px;
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.3s ease;
+  }
+  
+  .activity:hover {
+    transform: translateY(-5px);
+  }
+  
+  .activity input[type="checkbox"] {
+    display: none;
+  }
+  
+  .activity label {
+    cursor: pointer;
+  }
+  
+  .activity h2 {
+    margin-top: 0;
+  }
+  
+  .activity p {
+    margin-bottom: 10px;
+  }
+  
+  .time-slot {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
+  .time-slot option {
+    padding: 8px;
+    border-radius: 5px;
+    margin: 5px 0;
+    background-color: #e0e0e0;
+  }
+  
+  /* Selected Activities Display Styles */
+  #selectedActivities {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  #selectedActivities h2 {
+    margin-top: 0;
+  }
+  
+  #selectedActivities ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #selectedActivities li {
+    margin-bottom: 5px;
+  }
+  
+  /* Submit Button Style */
+  #submitBtn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #submitBtn:hover {
+    background-color: #45a049;
+  }
+  .deselect-btn {
+    display: block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .deselect-btn:hover {
+    background-color: #f0f0f0;
+  }
+
+  .header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 32px;
+}
